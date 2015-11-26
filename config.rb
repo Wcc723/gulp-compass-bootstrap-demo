@@ -1,7 +1,7 @@
 
-additional_import_paths = "./bower_components/bootstrap/source/scss/"
+additional_import_paths = "./bower_components/bootstrap/scss/"
 
-css_path = "source/stylesheets"
+css_path = "public/stylesheets"
 sass_path = "source/scss"
 images_dir = "source/images"
 output_style = :nest

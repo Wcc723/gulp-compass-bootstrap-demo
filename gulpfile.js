@@ -1,7 +1,9 @@
 var gulp = require('gulp'),
 	concat = require('gulp-concat'),
   plumber = require('gulp-plumber'),
-	compass = require('gulp-compass');
+	compass = require('gulp-compass'),
+  watch = require('gulp-watch'),
+  batch = require('gulp-batch');
 
 var path = {
   'source': './source/',
@@ -23,17 +25,28 @@ gulp.task('jsLib', function() {
 });
 
 gulp.task('compass', function() {
-  gulp.src(['./source/scss/'])
+  return gulp.src(['./source/scss/'])
   .pipe(plumber())
   .pipe(compass({
     config_file: './config.rb'
   }))
 });
 
-gulp.task('compass-watch', function () {
-  gulp.watch('./source/**/*.scss', ['compass']);
+gulp.task('html', function() {
+  gulp.src(['./source/**/**.html'])
+  .pipe(plumber())
+  .pipe(gulp.dest( path.public ))
 });
 
-gulp.task('default', ['watch','jsLib']);
+gulp.task('watch', function () {
+  watch('./source/scss/**/*.scss', batch(function (events, done) {
+    gulp.start('compass', done);
+  }));
+  watch('./source/**/**.html', batch(function (events, done) {
+    gulp.start('html', done);
+  }));
+});
+
+gulp.task('default', ['watch','jsLib','compass','html']);
 
 
