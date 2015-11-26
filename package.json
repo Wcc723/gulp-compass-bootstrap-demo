@@ -1,0 +1,14 @@
+{
+  "name": "gulp-compass-and-bootstrap",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npm install"
+  },
+  "devDependencies": {
+    "gulp-concat": "^2.6.0",
+    "gulp-compass": "^2.1.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp": "^3.9.0"
+  }
+}
