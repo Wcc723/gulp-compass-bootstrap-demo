@@ -1,4 +1,5 @@
 
+# 匯入 Bootstrap v4
 additional_import_paths = "./bower_components/bootstrap/scss/"
 
 css_path = "public/stylesheets"
